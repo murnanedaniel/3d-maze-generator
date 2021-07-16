@@ -1,6 +1,7 @@
 
 from solid import *
 from math import *
+from functools import reduce
 from random import randint
 import operator
 
@@ -186,7 +187,7 @@ def get_tile(i):
         p = color('orange')(p + translate([-unit*1.1,0,unit/2])(rotate([0,90,0])(cylinder(r2 = dia/2, r1 = extra, h = unit*1.1))))
 
     if i.end: 
-        print 'exit (red) is on face',i.edge
+        print('exit (red) is on face', i.edge)
         cyl = cylinder(d = extra2*2, h = unit*2)
         if i.edge == 0:
             p += translate([0,0,-unit*2/2 + dia/2- dia*1.3])(rotate([0,0,0])(cyl))
@@ -284,7 +285,7 @@ def stick_mesh(width, height, depth):
 
 def cube_mesh(width, height, depth):
     step = unit/12
-    print 'stick c-s: ', step
+    print('stick c-s: ', step)
     x = max(width,height,depth) * unit + unit
     stick = cube([depth * unit + unit,step,step])
     stick2 = cube([step,width* unit + unit,step])
@@ -319,8 +320,8 @@ def render_maze(grid, **kwargs):
     stop_dist = unit * 1.
 
     if DEBUG:
-        print type(grid[0][0][0])
-        print (grid[0][0][0])
+        print(type(grid[0][0][0]))
+        print(grid[0][0][0])
         cad = get_tile(grid[0][0][0])
         #open('test.txt','w+').write(text.render(grid, options))
         out = ('$fn=%d;' % RESOLUTION)+scad_render(cad)
@@ -332,8 +333,8 @@ def render_maze(grid, **kwargs):
     width = len(grid[0][0])
 
 
-    print '%d x %d x %d cube' % (depth, height, width)
-    print '(%d x %d x %d) mm cube' % (depth*unit, height*unit, width*unit)
+    print('%d x %d x %d cube' % (depth, height, width))
+    print('(%d x %d x %d) mm cube' % (depth*unit, height*unit, width*unit))
 
     m = []
     for k,z in enumerate(grid):

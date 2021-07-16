@@ -143,7 +143,7 @@ def maze(width, height, depth, **kwargs):
     grid2 = [[[0,0,0,0,0,0] for x in range(width)] for x in range(height)]
 
     c = 0
-    print 'running Prim\'s alg on potentially %d walls.' % (6 * height * width * depth)
+    print('running Prim\'s alg on potentially %d walls.' % (6 * height * width * depth))
     while len(wall_list):
         w = random.choice(wall_list)
 
@@ -174,7 +174,7 @@ def maze(width, height, depth, **kwargs):
         if i[0].edge  == 5:
             if i[1] > end[1]:
                 end = i
-    print 'correct path is %d nodes long' % end[1]
+    print('correct path is %d nodes long' % end[1])
     end = end[0]
     end.end = True
 
@@ -187,6 +187,7 @@ a start and an end and no loops.  Outputs openscad.
 Usage:
   maze.py -h
   maze.py [-x WIDTH] [-y HEIGHT] [-z DEPTH] [-r RES] [-n SPACING] [-d DIAMETER] [-m | -s  | -t ] [-f THICK] <output.scad>
+  
 Options:
   -h, --help                    Show this help message and exit
   -x --width WIDTH              Number of cells wide [default: 5]
@@ -205,9 +206,11 @@ maze.py [-x 10] [-y 5] [-z 4]  [-n 10] [-d 3] [-m | -s | -t ] [-f 1.0] <output.s
 '''
 
 
+
 if __name__ == "__main__":
 
     args = docopt(doc)
+    print(args)
 
     dims = [int(args['--width'][0]),int(args['--height'][0]),int(args['--depth'][0])]
 
